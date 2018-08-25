@@ -251,9 +251,14 @@ def big_shoe_rebounds
 end 
 p big_shoe_rebounds
 
-puts "______LONGEST NAME _____"
+puts "______LONGEST NAME _____" #COMPARE PLAYERS anme and use sort || look up reduce to see 
+  
+#longest = []
+#players = game_hash.values.map { |team| teams_players = team[:players].flatten.map {|names|names[:player_name] }.sort_by { |name|    longest << name.length }
+
 def player_with_longest_name
- 
-  #COMPARE PLAYERS anme and use sort || look up reduce to see 
+ longest = all_players_with_stats.max_by { |length| length.fetch(:player_name)}.sort_by { |name|    longest << name.length }
+  longest.max {|name1, name2| name2.length <=> name1.length}
 end 
-player_with_longest_name
+p player_with_longest_name
+  
