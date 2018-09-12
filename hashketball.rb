@@ -280,6 +280,7 @@ puts " --------- Team_Names ------------"
       teams_names = []
       teams_names.flatten << game_hash.values.each  do |teams, teams_info| teams_names <<  teams[:team_name] 
     end   
+   
     teams_names
 end 
 p get_teams_names
@@ -335,31 +336,32 @@ def get_shoe_size(name)
 player = get_a_player(name)
 (player[0][:shoe])
 
-# 2 ***** ***** with ITERATOR EACH & Indexing
-player = get_a_player(name)
-    player[0].each do |key, value|
-    p value 
-     unless key != :shoe # if key == :shoe
-          ret = "#{name} shoe size is #{value}"
-     return ret
-      end 
-    end 
+# # 2 ***** ***** with ITERATOR EACH & Indexing
+# player = get_a_player(name)
+#     player[0].each do |key, value|
+#     p value 
+#     unless key != :shoe # if key == :shoe
+#           ret = "#{name} shoe size is #{value}"
+#     return ret
+#       end 
+#     end 
 
 # 3 ************ with EACH and COMPARISON
-players = game_hash[:home][:players].concat(game_hash[:away][:players])
- #returns [{player_name: ....}] in hash inside an array 
-    players.each do |key, details| key
-    # p key
-        #key returns {player_name} and details :are nil beacause in object
-        # p "DETAILS"
-        # p players
-        # p "END DETAILS"
-        players.each do | player| 
-          if player[:player_name] == name
-          return  player[:shoe]
-          end 
-        end 
-    end 
+# players = game_hash[:home][:players].concat(game_hash[:away][:players])
+# #returns [{player_name: ....}] in hash inside an array 
+#     players.each do |key, details| key
+#     # p key
+#         #key returns {player_name} and details :are nil beacause in object
+#         # p "DETAILS"
+#         # p players
+#         # p "END DETAILS"
+#         players.each do | player| 
+#           if player[:player_name] == name
+#           return  player[:shoe]
+          
+#           end 
+#         end 
+#     end 
 end 
 p get_shoe_size("Brendan Haywood")
 
@@ -426,12 +428,7 @@ p get_player_stats("Bismak Biyombo")
 puts " --------- BIGGEST SHOE SIZE ------------"
  
 def bigest_shoe
-  get_players_n_stats.max_by {|player_name| player_name.fetch(:shoe)}
-#  p player_name
-end 
-p bigest_shoe
-
-puts " --------- BIGGEST SHOE REBOUNDS ------------"
+  shoe_size- BIGGEST SHOE REBOUNDS ------------"
 
 def big_shoe_rebounds
 # a = bigest_shoe.map do |att , val| 
@@ -444,7 +441,7 @@ a = bigest_shoe.each  do |att , val |
     
    end 
 
- b = bigest_shoe.fetch(:rebounds)
+ b = bigest_shoe.fetch(:rebounds).to_i
 end 
 p big_shoe_rebounds
 
@@ -452,7 +449,7 @@ p "------------ SCORE BY NAME --------------"
 def num_points_scored(name) 
     player = get_a_player(name)
     # player.fetch(:points)
-    player[0].fetch(:points)
+    player[0].fetch(:points).to_i
 
 end
 p num_points_scored("DeSagna Diop") 
@@ -461,8 +458,7 @@ p num_points_scored("DeSagna Diop")
 def most_points_scored
     players = game_hash[:home][:players].concat(game_hash[:away][:players])
     players.max_by {|player| player[:points]}
-    binding.pry
-
+    # binding.pry
 
 end 
 p most_points_scored
